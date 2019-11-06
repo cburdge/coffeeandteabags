@@ -16,8 +16,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
     depends_on:
       - jackett
   radarr:
@@ -35,8 +35,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
     depends_on:
       - jackett
   bazarr:
@@ -55,8 +55,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
     depends_on:
       - sonarr
       - radarr
@@ -74,8 +74,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
   plexpy:
     image: linuxserver/tautulli:latest
     environment:
@@ -90,8 +90,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
     depends_on:
       - plex
   qbittorrent:
@@ -112,8 +112,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
   plex:
     image: plexinc/pms-docker:plexpass
     environment:
@@ -130,8 +130,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
   ombi:
     image: linuxserver/ombi
     environment:
@@ -145,5 +145,5 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"

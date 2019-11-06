@@ -14,8 +14,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
     depends_on:
       - mqtt
   mqtt:
@@ -31,8 +31,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
   home-assistant:
     image: homeassistant/home-assistant
     environment:
@@ -46,8 +46,8 @@ services:
     logging:
         driver: "json-file"
         options:
-            max-file: 5
-            max-size: 10m
+            max-file: "5"
+            max-size: "10m"
     depends_on:
       - mqtt
       - mqtt-bridge
