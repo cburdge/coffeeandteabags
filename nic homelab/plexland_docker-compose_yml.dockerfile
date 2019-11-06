@@ -18,7 +18,7 @@ services:
         options:
             max-file: 5
             max-size: 10m
-	depends_on:
+    depends_on:
       - jackett
   radarr:
     image: linuxserver/radarr
