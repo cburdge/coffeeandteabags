@@ -1,38 +1,24 @@
 version: '3'
 
 services:
-  mqtt-bridge:
-    image: stjohnjohnson/smartthings-mqtt-bridge
+  unifi-controller:
+    image: linuxserver/unifi-controller
     environment:
       - PUID=1001
       - PGID=1001
       - TZ=America/Chicago
     volumes:
-      - /dockerconfigs/homeautomation/mqtt-bridge:/config
+      - /dockerconfigs/plexland/unifi:/config
     ports:
-      - 1884:8080
-    depends_on:
-      - mqtt
-  mqtt:
-    image: matteocollina/mosca
-    environment:
-      - PUID=1001
-      - PGID=1001
-      - TZ=America/Chicago
-    volumes:
-      - /dockerconfigs/homeautomation/mqtt-mosca:/db
-    ports:
-      - 1883:1883
-  home-assistant:
-    image: homeassistant/home-assistant
-    environment:
-      - PUID=1001
-      - PGID=1001
-      - TZ=America/Chicago
-    volumes:
-      - /dockerconfigs/homeautomation/hass:/config
-    ports:
-      - 8123:8123
-    depends_on:
-      - mqtt
-      - mqtt-bridge
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 8081:8081
+      - 8443:8443
+      - 8843:8843
+      - 8880:8880
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m

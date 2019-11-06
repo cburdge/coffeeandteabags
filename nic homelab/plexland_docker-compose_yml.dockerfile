@@ -13,7 +13,12 @@ services:
       - /mnt/nfs/downloads:/downloads
     ports:
       - 8989:8989
-    depends_on:
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m
+	depends_on:
       - jackett
   radarr:
     image: linuxserver/radarr
@@ -27,6 +32,11 @@ services:
       - /mnt/nfs/downloads:/downloads
     ports:
       - 7878:7878
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m
     depends_on:
       - jackett
   bazarr:
@@ -42,6 +52,11 @@ services:
       - /mnt/nfs/downloads:/downloads
     ports:
       - 6767:6767
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m
     depends_on:
       - sonarr
       - radarr
@@ -56,6 +71,11 @@ services:
       - /mnt/nfs/downloads:/downloads
     ports:
       - 9117:9117
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m
   plexpy:
     image: linuxserver/tautulli:latest
     environment:
@@ -67,6 +87,11 @@ services:
       - /dockerconfigs/plexland/plex/Library/Application\ Support\Plex\ Media\ Server/Logs:/logs:ro
     ports:
       - 8181:8181
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m
     depends_on:
       - plex
   qbittorrent:
@@ -84,6 +109,11 @@ services:
       - 6881:6881
       - 6881:6881/udp
       - 9090:9090
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m
   plex:
     image: plexinc/pms-docker:plexpass
     environment:
@@ -97,6 +127,11 @@ services:
       - /dockerconfigs/plexland/plex:/config
       - /mnt/nfs/data:/data
       - /mnt/nfs/data/transcode:/transcode
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m
   ombi:
     image: linuxserver/ombi
     environment:
@@ -107,3 +142,8 @@ services:
       - /dockerconfigs/plexland/ombi:/config
     ports:
       - 3579:3579
+    logging:
+        driver: "json-file"
+        options:
+            max-file: 5
+            max-size: 10m
