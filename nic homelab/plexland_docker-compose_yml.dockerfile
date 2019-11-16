@@ -84,7 +84,7 @@ services:
       - TZ=America/Chicago
     volumes:
       - /dockerconfigs/plexland/tautulli:/config
-      - /dockerconfigs/plexland/plex/Library/Application\ Support\Plex\ Media\ Server/Logs:/logs:ro
+      - /dockerconfigs/plexland/plex/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro
     ports:
       - 8181:8181
     logging:
